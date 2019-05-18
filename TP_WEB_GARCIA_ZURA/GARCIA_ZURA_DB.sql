@@ -1,3 +1,4 @@
+
 CREATE DATABASE GARCIA_ZURA_DB_PROMO
 GO
 USE GARCIA_ZURA_DB_PROMO
@@ -28,7 +29,8 @@ GO
 CREATE TABLE Premios_X_Clientes (
 	IDPremio	int	foreign key references Premios(ID) not null,
 	DNI	varchar(8) foreign key references Clientes(DNI) not null,
-	primary key(IDPremio, DNI)
+	IDVoucher varchar(10) foreign key references Vouchers(codigo) not null,
+	primary key(IDPremio, DNI,IDVoucher)
 )
 GO
 INSERT INTO Vouchers (codigo)
