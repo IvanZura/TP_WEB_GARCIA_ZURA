@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WEBFORM_PROMOCOMERCIO
 {
-    public partial class Contact : Page
+    public partial class Datos : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

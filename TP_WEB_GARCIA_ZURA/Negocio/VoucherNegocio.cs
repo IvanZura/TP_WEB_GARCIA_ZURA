@@ -17,7 +17,7 @@ namespace Negocio
             GestorAccesoDatos db = new GestorAccesoDatos();
             try
             {
-                db.setearConsulta("select codigo from vouchers where estado=1 and codigo=" + codigo);
+                db.setearConsulta("select codigo from vouchers where estado=1 and codigo='" + codigo+"'");
                 db.abrirConexion();
                 db.ejecutarConsulta();
                 if (db.Lector.Read())

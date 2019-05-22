@@ -10,16 +10,16 @@
 namespace WEBFORM_PROMOCOMERCIO {
     
     
-    public partial class _Default {
+    public partial class Datos {
         
         /// <summary>
-        /// Control txtVoucher.
+        /// Control txtDNI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVoucher;
+        protected global::System.Web.UI.WebControls.TextBox txtDNI;
         
         /// <summary>
         /// Control btnEnviar.
