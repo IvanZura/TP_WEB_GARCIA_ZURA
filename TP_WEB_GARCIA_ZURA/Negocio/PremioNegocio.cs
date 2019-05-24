@@ -77,7 +77,7 @@ namespace Negocio
         }
 
         //Asigna el premio con el cliente y el codigo
-        public static bool asinar (string dni, string codigo, string idPremio)
+        public static bool asignar (string dni, string codigo, string idPremio)
         {
             GestorAccesoDatos db = new GestorAccesoDatos();
             try

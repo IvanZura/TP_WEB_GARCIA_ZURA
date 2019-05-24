@@ -45,6 +45,9 @@ namespace Negocio
             }
         }
         public static bool InsertarPersona()
+        {
+            return true;
+        }
 
     }
 }

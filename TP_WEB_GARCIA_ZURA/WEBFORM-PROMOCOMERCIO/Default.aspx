@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <label for="txtVoucher">Codigo</label>
-                                <asp:TextBox runat="server" CssClass="validate" ID="txtVoucher" autofocus/>
+                                <asp:TextBox runat="server" CssClass="validate" ID="txtVoucher" autofocus="true"/>
                               
                             </div>
                         </div>

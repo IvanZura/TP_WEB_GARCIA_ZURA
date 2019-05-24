@@ -14,7 +14,7 @@
                             <h6>Una vez ingresado su DNI, presione ENTER para validarlo.</h6>
                             <div class="input-field col s6">
 
-                                <asp:TextBox runat="server" ID="DNI" CssClass="validate" autofocus/>
+                                <asp:TextBox runat="server" ID="DNI" CssClass="validate" autofocus="true"/>
                                 <label for="DNI">DNI</label>
                             </div>
                         </div>
@@ -22,27 +22,27 @@
                         <div class="row hide" id="datos">
                             <div class="divider"></div>
                             <div class="input-field col s6">
-                                <asp:TextBox runat="server" ID="txtNombre" CssClass="validate" required/>
+                                <asp:TextBox runat="server" ID="txtNombre" CssClass="validate" required="true"/>
                                 <label for="nombre">Nombre</label>
                             </div>
                             <div class="input-field col s6">
-                                <asp:TextBox runat="server" ID="txtApellido" CssClass="validate" required/>
+                                <asp:TextBox runat="server" ID="txtApellido" CssClass="validate" required="true"/>
                                 <label for="apellido">Apellido</label>
                             </div>
                             <div class="input-field col s6">
-                                <asp:TextBox runat="server" ID="txtDireccion" CssClass="validate" required/>
+                                <asp:TextBox runat="server" ID="txtDireccion" CssClass="validate" required="true"/>
                                 <label for="direccion">Direccion</label>
                             </div>
                             <div class="input-field col s6">
-                                <asp:TextBox runat="server" ID="txtCiudad" CssClass="validate" required/>
+                                <asp:TextBox runat="server" ID="txtCiudad" CssClass="validate" required="true"/>
                                 <label for="ciudad">Ciudad</label>
                             </div>
                             <div class="input-field col s6">
-                                <asp:TextBox runat="server" ID="txtCP" CssClass="validate" required/>
+                                <asp:TextBox runat="server" ID="txtCP" CssClass="validate" required="true"/>
                                 <label for="CP">Codigo Postal</label>
                             </div>
                             <div class="input-field col s6">
-                                <asp:TextBox runat="server" type="email" ID="txtEmail" CssClass="validate" required/>
+                                <asp:TextBox runat="server" type="email" ID="txtEmail" CssClass="validate" required="true"/>
                                 <label for="email">Email</label>
                                 <span class="helper-text" data-error="E-mail inválido" data-success="Correcto"></span>
                             </div>

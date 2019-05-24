@@ -15,7 +15,7 @@ namespace WEBFORM_PROMOCOMERCIO
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["voucher"]==null|| Session["idPremio"] == null)
+            if(Session["voucher"]==null && Session["idPremio"] == null)
             {
                 Response.Redirect("default.aspx");
             }
