@@ -8,7 +8,7 @@ using AccesoDatos;
 
 namespace Negocio
 {
-    class PremioNegocio
+    public class PremioNegocio
     {
         // Lista de Premio
         public static List<Premio> lista()
@@ -18,16 +18,16 @@ namespace Negocio
             try
             {
                 Premio premio;
-                db.setearConsulta("select * from premio");
+                db.setearConsulta("select * from premios");
                 db.abrirConexion();
                 db.ejecutarConsulta();
-                if (db.Lector.Read())
+                while (db.Lector.Read())
                 {
                     premio = new Premio();
                     premio.id = (int)db.Lector["id"];
-                    premio.titulo = (string)db.Lector["tirulo"].ToString();
+                    premio.titulo = (string)db.Lector["titulo"].ToString();
                     premio.descripcion = (string)db.Lector["descripcion"].ToString();
-                    premio.url = (string)db.Lector["url"].ToString();
+                    premio.url = (string)db.Lector["imagen"].ToString();
                     lista.Add(premio);
                 }
                 return lista;

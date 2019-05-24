@@ -12,7 +12,7 @@ GO
 CREATE TABLE Clientes (
 	DNI	varchar(8)	not null primary key,
 	Nombre	varchar(30) not null,
-	Apeliido varchar(30) not null,
+	Apellido varchar(30) not null,
 	Email	varchar(30) not null,
 	Direccion	varchar(50) not null,
 	Ciudad	varchar(50) not null,

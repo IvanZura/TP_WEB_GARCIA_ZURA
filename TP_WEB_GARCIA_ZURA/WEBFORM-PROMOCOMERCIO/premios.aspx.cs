@@ -5,28 +5,29 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
-using System.Configuration;
 using Dominio;
 using Negocio;
 
 namespace WEBFORM_PROMOCOMERCIO
 {
-    public partial class Datos : System.Web.UI.Page
+    public partial class premios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["voucher"]==null|| Session["idPremio"] == null)
-            {
+            if(Session["voucher"]== null){
                 Response.Redirect("default.aspx");
             }
         }
 
         [WebMethod]
-        public  static Persona datosCliente(string dni)
+        public static List<Premio> listaPremios()
         {
-           
-           return PersonaNegocio.traer(dni);
-
+            return PremioNegocio.lista();
+        }
+        [WebMethod]
+        public static void siguiente(string premio)
+        {
+            HttpContext.Current.Session.Add("idPremio", premio);
         }
 
     }

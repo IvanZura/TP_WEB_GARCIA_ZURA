@@ -17,7 +17,7 @@ namespace Negocio
             try
             {
                 Persona persona = null;
-                db.setearConsulta("select * from vouchers where  dni=" + dni);
+                db.setearConsulta("select * from clientes where  dni=" + dni);
                 db.abrirConexion();
                 db.ejecutarConsulta();
                 if (db.Lector.Read())

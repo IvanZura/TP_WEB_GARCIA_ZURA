@@ -23,7 +23,9 @@ namespace WEBFORM_PROMOCOMERCIO
                 if (VoucherNegocio.verificar(txtVoucher.Text.Trim()))
                 {
                     Session.Add("voucher", txtVoucher.Text.Trim());
-                    Response.Redirect("Datos.aspx");
+                   
+                    Response.Redirect("Premios.aspx");
+
                 }
                 else
                 {
