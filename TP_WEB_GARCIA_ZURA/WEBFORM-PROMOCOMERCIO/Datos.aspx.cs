@@ -22,11 +22,18 @@ namespace WEBFORM_PROMOCOMERCIO
         }
 
         [WebMethod]
-        public  static Persona datosCliente(string dni)
+        public static string DatosCliente(string dni)
         {
-           
-           return PersonaNegocio.traer(dni);
-
+            Persona local = PersonaNegocio.traer(dni);
+            if (local == null)
+            {
+                return "{ \"length\" : 0 }";
+            } else
+            {
+                string res = "{ \"length\" : 1, \"nombre\": \"" + local.nombre + "\", \"apellido\": \"" + local.apellido + "\", \"email\": \"" + local.email + "\", \"ciudad\": \"" + local.ciudad + "\"," +
+                "\"direccion\": \"" + local.direccion + "\", \"CP\": \"" + local.CP + "\" }";
+                return res;
+            }
         }
 
     }

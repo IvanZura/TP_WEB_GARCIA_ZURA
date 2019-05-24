@@ -4,3 +4,9 @@ C:\Users\maxim\Desktop\Prog3\TP3 web\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Domin
 C:\Users\maxim\Desktop\Prog3\TP3 web\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\maxim\Desktop\Prog3\TP3 web\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.dll
 C:\Users\maxim\Desktop\Prog3\TP3 web\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Dominio\bin\Debug\Dominio.dll
+C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.dll
+C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Dominio\obj\Debug\Dominio.pdb

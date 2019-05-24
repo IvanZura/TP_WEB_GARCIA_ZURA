@@ -3,95 +3,109 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="row">
-    <div class="col s12 m9 l9offset-m3 ">
-      <div class="card grey lighten-5">
-        <div class=" black-text">
-          <div class="card-title white lighten-5" style="padding: 2px"><h3 class="center-align">DATOS</h3></div>
-          <div class="card-content">
-            <div class="row">
-                <div class="input-field col s6">
-               
-                <asp:Textbox runat="server" id="DNI" Cssclass="validate"/>
-                <label for="DNI">DNI</label>
-              </div>
-            </div>
-            
-            <div class="row hide" id="datos">
-                <div class="divider"></div>
-              <div class="input-field col s6">
-                <asp:Textbox runat="server" id="txtNombre"  CssClass="validate" />
-                <label for="nombre">nombre</label>
-              </div>
-              <div class="input-field col s6">
-                  <asp:Textbox runat="server" id="txtApellido" Cssclass="validate" />
-                  <label for="apellido">apellido</label>
-                </div>
-              <div class="input-field col s6">
-                <asp:Textbox runat="server" id="txtEmail" Cssclass="validate" />
-                <label for="email">Email</label>
-              </div>
-              <div class="input-field col s6">
-                <asp:Textbox runat="server" id="txtDireccion" Cssclass="validate"/>
-                <label for="direccion">Direccion</label>
-              </div>
-              <div class="input-field col s6">
-                <asp:Textbox runat="server" id="txtCiudad" Cssclass="validate"/>
-                <label for="ciudad">Ciudad</label>
-              </div>
-              <div class="input-field col s6">
-                <asp:Textbox runat="server" id="txtCP"  Cssclass="validate" />
-                <label for="CP">Codigo Postal</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-action">
-            <asp:Button Text="!!Participar!!" runat="server" Cssclass="btn"  id="btnParticipar" />
+        <div class="col s12 m12">
+            <div class="card grey lighten-5">
+                <div class="black-text">
+                    <div class="card-title white lighten-5" style="padding: 2px">
+                        <h4 class="center-align">Ingrese sus datos</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <h6>Una vez ingresado su DNI, presione ENTER para validarlo.</h6>
+                            <div class="input-field col s6">
 
+                                <asp:TextBox runat="server" ID="DNI" CssClass="validate" autofocus/>
+                                <label for="DNI">DNI</label>
+                            </div>
+                        </div>
+
+                        <div class="row hide" id="datos">
+                            <div class="divider"></div>
+                            <div class="input-field col s6">
+                                <asp:TextBox runat="server" ID="txtNombre" CssClass="validate" required/>
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <asp:TextBox runat="server" ID="txtApellido" CssClass="validate" required/>
+                                <label for="apellido">Apellido</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <asp:TextBox runat="server" ID="txtDireccion" CssClass="validate" required/>
+                                <label for="direccion">Direccion</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <asp:TextBox runat="server" ID="txtCiudad" CssClass="validate" required/>
+                                <label for="ciudad">Ciudad</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <asp:TextBox runat="server" ID="txtCP" CssClass="validate" required/>
+                                <label for="CP">Codigo Postal</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <asp:TextBox runat="server" type="email" ID="txtEmail" CssClass="validate" required/>
+                                <label for="email">Email</label>
+                                <span class="helper-text" data-error="E-mail inválido" data-success="Correcto"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action hide">
+                    <asp:Button Text="!!Participar!!" runat="server" CssClass="btn" ID="btnParticipar" />
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <script >
-      document.getElementById("MainContent_DNI").addEventListener("change", function (e) {
-          var datos = document.getElementById("datos");
-          datos.classList.remove("hide");
-          /*fetch("Datos.aspx/datosCliente", {
-              method: "POST",
-              data: '{dni:"' + this.value + '"}',
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-          }).then(function (response) {
-              return response.json;
-          }).then(function (data) {
-              console.log(data);
-          });*/
-          $.ajax({
-              type: "POST",
-              url: '<%= ResolveUrl("Datos.aspx/datosCliente") %>',
-              data: "{dni:'" + this.value + "'}",
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: response => {
-                  if (response.d) {
-                      $('#<%=txtNombre.ClientID%>').val(response.d.nombre).change();
-                      $('#<%=txtApellido.ClientID%>').val(response.d.apellido).change();
-                      $('#<%=txtEmail.ClientID%>').val(response.d.email).change();
-                      $('#<%=txtCiudad.ClientID%>').val(response.d.ciudad).change();
-                      $('#<%=txtDireccion.ClientID%>').val(response.d.direccion).change();
-                      $('#<%=txtCP.ClientID%>').val(response.d.CP).change();
-                      $('#<%=txtDireccion.ClientID%>').click();
-                      $('#datos').find("label").addClass("active");
-                  }
-              },
-              failure: function (response) {
-                  alert("fail");
-              },
-              error: function (response) {
-                  alert(response.responseText);
-              }
-          });
-      });
-  </script>
+    <script>
+        function LimpiarCampos() {
+            document.querySelector('#MainContent_txtNombre').value = ''
+            document.querySelector('#MainContent_txtApellido').value = ''
+            document.querySelector('#MainContent_txtEmail').value = ''
+            document.querySelector('#MainContent_txtCiudad').value = ''
+            document.querySelector('#MainContent_txtDireccion').value = ''
+            document.querySelector('#MainContent_txtCP').value = ''
+        }
+        document.getElementById("MainContent_DNI").addEventListener("keypress", function (e) {
+            if (e.key == 'Enter') {
+                e.preventDefault()
+                if (this.value == '') {
+                    M.toast({ html: 'DNI vacío' })
+                } else {
+                    fetch('<%= ResolveUrl("Datos.aspx/DatosCliente") %>', {
+                        method: 'POST',
+                        body: "{dni:'" + this.value + "'}",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (response) {
+                            let datos = document.getElementById("datos");
+                            datos.classList.remove("hide");
+                            response.d = JSON.parse(response.d)
+                            if (response.d.length != 0) {
+                                document.querySelector('#MainContent_txtNombre').value = response.d.nombre
+                                document.querySelector('#MainContent_txtApellido').value = response.d.apellido
+                                document.querySelector('#MainContent_txtEmail').value = response.d.email
+                                document.querySelector('#MainContent_txtCiudad').value = response.d.ciudad
+                                document.querySelector('#MainContent_txtDireccion').value = response.d.direccion
+                                document.querySelector('#MainContent_txtCP').value = response.d.CP
+                                document.querySelector('#MainContent_txtNombre').focus()
+                                document.querySelector('#MainContent_txtApellido').focus()
+                                document.querySelector('#MainContent_txtEmail').focus()
+                                document.querySelector('#MainContent_txtCiudad').focus()
+                                document.querySelector('#MainContent_txtDireccion').focus()
+                                document.querySelector('#MainContent_txtCP').focus()
+                            } else {
+                                LimpiarCampos()
+                                M.toast({ html: 'Registrese por favor' })
+                            }
+                        });
+                }
+            }
+        });
+    </script>
 
 </asp:Content>

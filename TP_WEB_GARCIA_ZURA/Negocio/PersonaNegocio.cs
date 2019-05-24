@@ -44,6 +44,7 @@ namespace Negocio
                 db.cerrarConexion();
             }
         }
+        public static bool InsertarPersona()
 
     }
 }

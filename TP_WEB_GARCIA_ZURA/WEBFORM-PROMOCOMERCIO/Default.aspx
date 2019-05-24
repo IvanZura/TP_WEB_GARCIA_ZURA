@@ -9,16 +9,27 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <label for="txtVoucher">Codigo</label>
-                                <asp:TextBox runat="server" CssClass="validate" ID="txtVoucher"/>
+                                <asp:TextBox runat="server" CssClass="validate" ID="txtVoucher" autofocus/>
                               
                             </div>
                         </div>
 
                     </div>
                     <div class="card-action">
-                        <asp:Button Text="text" runat="server" ID="btnEnviar" CssClass="btn" name="Enviar" OnClick="btnEnviar_Click" />
+                        <asp:Button Text="Validar" runat="server" ID="btnEnviar" CssClass="btn" name="Enviar" OnClick="btnEnviar_Click" />
                     </div>
                 </div>
             </div>
         </div>
+    <script>
+        let Voucher = document.getElementById('MainContent_txtVoucher')
+        Voucher.addEventListener('keypress', (e) => {
+            if (e.key == 'Enter') {
+                if (Voucher.value == '') {
+                    e.preventDefault()
+                    M.toast({ html: 'Campo vacío' })
+                }
+            }
+        })
+    </script>
 </asp:Content>

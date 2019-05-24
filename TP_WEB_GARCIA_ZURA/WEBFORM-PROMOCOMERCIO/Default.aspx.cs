@@ -29,12 +29,12 @@ namespace WEBFORM_PROMOCOMERCIO
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('El numero de voucher es incorrecto')",true);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "M.toast({ html: 'Voucher inválido' })", true);
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('Relle el campo codigo antes de enviar')", true);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "M.toast({ html: 'Campo vacío' })", true);
             }
         }
     }
