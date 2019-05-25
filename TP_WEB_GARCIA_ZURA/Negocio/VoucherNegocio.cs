@@ -43,12 +43,12 @@ namespace Negocio
 
 
         // Cambi el estado a usado 
-        public static bool cambiarEstado(string codigo)
+        public static bool CambiarEstado(string codigo)
         {
             GestorAccesoDatos db = new GestorAccesoDatos();
             try
             {
-                db.setearConsulta("update vouchers set estado=0 where codigo=" + codigo);
+                db.setearConsulta("update vouchers set estado=0 where codigo='" + codigo + "'");
                 db.abrirConexion();
                 if (db.ejecutarAccion() == 1)
                 { 

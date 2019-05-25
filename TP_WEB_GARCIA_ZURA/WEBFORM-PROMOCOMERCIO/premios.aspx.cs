@@ -27,7 +27,7 @@ namespace WEBFORM_PROMOCOMERCIO
         [WebMethod]
         public static void siguiente(string premio)
         {
-            HttpContext.Current.Session.Add("idPremio", premio);
+            HttpContext.Current.Session["idPremio"] = premio;
         }
 
     }

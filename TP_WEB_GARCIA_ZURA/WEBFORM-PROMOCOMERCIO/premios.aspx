@@ -50,11 +50,12 @@
                  $(card).append(cardImage, title, cardContent);
                  $(contenedor).append(card);
                  $(fila).append(contenedor);
+                 let id = this.id;
                  $(icon).click(function () {
                      $.ajax({
                          type: "POST",
                          url: '<%= ResolveUrl("Premios.aspx/siguiente") %>',
-                            data: "{premio:'" + this.id + "'}",
+                            data: "{premio:'" + id + "'}",
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: location.replace("Datos.aspx"),

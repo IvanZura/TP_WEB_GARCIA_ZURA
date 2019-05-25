@@ -27,12 +27,51 @@ namespace WEBFORM_PROMOCOMERCIO
             Persona local = PersonaNegocio.traer(dni);
             if (local == null)
             {
+                HttpContext.Current.Session["EsCliente"] = false;
                 return "{ \"length\" : 0 }";
             } else
             {
+                HttpContext.Current.Session["EsCliente"] = true;
                 string res = "{ \"length\" : 1, \"nombre\": \"" + local.nombre + "\", \"apellido\": \"" + local.apellido + "\", \"email\": \"" + local.email + "\", \"ciudad\": \"" + local.ciudad + "\"," +
                 "\"direccion\": \"" + local.direccion + "\", \"CP\": \"" + local.CP + "\" }";
                 return res;
+            }
+        }
+
+        [WebMethod]
+        public static bool CompletaParticipante(string nombre, string apellido, string email, string ciudad, string direccion,
+            string CP, string DNI)
+        {
+            Participante nuevo = new Participante();
+            nuevo.nombre = nombre;
+            nuevo.apellido = apellido;
+            nuevo.email = email;
+            nuevo.ciudad = ciudad;
+            nuevo.direccion = direccion;
+            nuevo.CP = CP;
+            nuevo.DNI = DNI;
+            if (!(bool)HttpContext.Current.Session["EsCliente"])
+            {
+                if (!PersonaNegocio.InsertarPersona(nuevo))
+                {
+                    return false;
+                }
+            }
+
+            if (VoucherNegocio.CambiarEstado(HttpContext.Current.Session["voucher"].ToString()))
+            {
+                if (PremioNegocio.asignar(nuevo.DNI, HttpContext.Current.Session["voucher"].ToString(), HttpContext.Current.Session["idPremio"].ToString()))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 

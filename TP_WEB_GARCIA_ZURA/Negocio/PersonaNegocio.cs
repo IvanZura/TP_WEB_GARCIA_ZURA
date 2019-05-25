@@ -44,9 +44,40 @@ namespace Negocio
                 db.cerrarConexion();
             }
         }
-        public static bool InsertarPersona()
+        public static bool InsertarPersona(Participante nuevo)
         {
-            return true;
+            GestorAccesoDatos db = new GestorAccesoDatos();
+            try
+            {
+                db.setearConsulta("insert into clientes (DNI, Nombre, Apellido, Email, Direccion, CP, Ciudad) " +
+                    "Values (@DNI, @Nombre, @Apellido, @Email, @Direccion, @CP, @Ciudad)");
+                db.Comando.Parameters.Clear();
+                db.Comando.Parameters.AddWithValue("@DNI", nuevo.DNI);
+                db.Comando.Parameters.AddWithValue("@Nombre", nuevo.nombre);
+                db.Comando.Parameters.AddWithValue("@Apellido", nuevo.apellido);
+                db.Comando.Parameters.AddWithValue("@Email", nuevo.email);
+                db.Comando.Parameters.AddWithValue("@Direccion", nuevo.direccion);
+                db.Comando.Parameters.AddWithValue("@CP", nuevo.CP);
+                db.Comando.Parameters.AddWithValue("@Ciudad", nuevo.ciudad);
+                db.abrirConexion();
+                if (db.ejecutarAccion() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                db.cerrarConexion();
+            }
         }
 
     }

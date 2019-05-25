@@ -82,7 +82,7 @@ namespace Negocio
             GestorAccesoDatos db = new GestorAccesoDatos();
             try
             {
-                db.setearConsulta("insert into Premios_X_Clientes(idPremio,dni,codigo) values(@idPremio,@dni,@codigo)");
+                db.setearConsulta("insert into Premios_X_Clientes(idPremio,dni,IDVoucher) values(@idPremio,@dni,@codigo)");
                 db.Comando.Parameters.Clear();
                 db.Comando.Parameters.AddWithValue("@idPremio", idPremio);
                 db.Comando.Parameters.AddWithValue("@dni", dni);
