@@ -3,6 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <div class="row">
             <div class="col s12">
+                <asp:Label ID="lblGano" runat="server" Text=""></asp:Label>
                 <div  class="card grey lighten-5">
                     <div class="card-content black-text">
                         <span class="card-title">Ingrese su codigo de promoción</span>

@@ -8,6 +8,8 @@ using System.Web.Services;
 using System.Configuration;
 using Dominio;
 using Negocio;
+using System.Net;
+using System.Net.Mail;
 
 namespace WEBFORM_PROMOCOMERCIO
 {
@@ -42,6 +44,21 @@ namespace WEBFORM_PROMOCOMERCIO
         public static bool CompletaParticipante(string nombre, string apellido, string email, string ciudad, string direccion,
             string CP, string DNI)
         {
+            var fromAddress = new MailAddress("tpwebgarciazura@gmail.com", "TPWEB");
+            var toAddress = new MailAddress(email, nombre + " " + apellido);
+            const string fromPassword = "TPWEB1234";
+            const string subject = "Sorteo !";
+            const string body = "Has completado todo y ganado el premio. Pronto te lo llevaran a tu domicilio";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
             Participante nuevo = new Participante();
             nuevo.nombre = nombre;
             nuevo.apellido = apellido;
@@ -62,6 +79,17 @@ namespace WEBFORM_PROMOCOMERCIO
             {
                 if (PremioNegocio.asignar(nuevo.DNI, HttpContext.Current.Session["voucher"].ToString(), HttpContext.Current.Session["idPremio"].ToString()))
                 {
+                    HttpContext.Current.Session["voucher"] = null;
+                    HttpContext.Current.Session["idPremio"] = null;
+                    HttpContext.Current.Session["gano"] = true;
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
                     return true;
                 }
                 else

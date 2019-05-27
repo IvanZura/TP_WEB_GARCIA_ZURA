@@ -13,7 +13,14 @@ namespace WEBFORM_PROMOCOMERCIO
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (HttpContext.Current.Session["gano"] != null)
+            {
+                lblGano.Text = "Se envío un e-mail a su direccion de correo para informarle sobre su premio";
+                HttpContext.Current.Session["gano"] = null;
+            } else
+            {
+                lblGano.Text = "";
+            }
         }
 
         protected void btnEnviar_Click(object sender, EventArgs e)

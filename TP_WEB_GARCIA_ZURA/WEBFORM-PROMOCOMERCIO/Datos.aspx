@@ -66,30 +66,61 @@
         let CP = document.querySelector('#MainContent_txtCP')
         let DNI = document.querySelector('#MainContent_DNI')
         let botonParticipa = document.querySelector('#MainContent_btnParticipar')
+
+        function ValidaCampos() {
+            if (Nombre.value == "" || Apellido.value == "" || Email.value == "" || Ciudad.value == "" || Direccion.value == ""
+                || CP.value == "" || DNI.value == "") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function validaMail() {
+            let arroba = Email.value.indexOf("@");
+            if (arroba != -1) {
+                if (Email.value.length - 1 != arroba) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }
         
         function EnviarInfo(e) {
             e.preventDefault()
-            botonParticipa.setAttribute('disabled', 'true')
-            fetch('<%= ResolveUrl("Datos.aspx/CompletaParticipante") %>', {
-                method: 'POST',
-                body: `{nombre:'${Nombre.value}', apellido:'${Apellido.value}', email:'${Email.value}',
-                        ciudad:'${Ciudad.value}', direccion:'${Direccion.value}', CP:'${CP.value}', DNI:'${DNI.value}'}`,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => {
-                    return response.json()
-                })
-                .then(response => {
-                    if (response.d) {
-                        M.toast({ html: 'Ya te ganaste tu premio !' })
-                        setTimeout(function () {
-                            window.location.replace("<%= ResolveUrl("Default.aspx") %>");
-                        }, 1000)
+            let Val = ValidaCampos();
+            if (Val) {
+                M.toast({ html: 'Algún campo esta vacío !' })
+            } else {
+                let valMail = validaMail()
+                if (valMail) {
+                    M.toast({ html: 'Formato de e-mail inválido' })
+                } else {
+                    botonParticipa.setAttribute('disabled', 'true')
+                    fetch('<%= ResolveUrl("Datos.aspx/CompletaParticipante") %>', {
+                        method: 'POST',
+                        body: `{nombre:'${Nombre.value}', apellido:'${Apellido.value}', email:'${Email.value}',
+                                ciudad:'${Ciudad.value}', direccion:'${Direccion.value}', CP:'${CP.value}', DNI:'${DNI.value}'}`,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            return response.json()
+                        })
+                        .then(response => {
+                            if (response.d) {
+                                M.toast({ html: 'Ya te ganaste tu premio !' })
+                                setTimeout(function () {
+                                    window.location.replace("<%= ResolveUrl("Default.aspx") %>");
+                                }, 1000)
 
-                    }
-                })
+                            }
+                        })
+                }
+            }
         }
         
         function LimpiarCampos() {
