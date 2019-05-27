@@ -41,7 +41,7 @@ namespace WEBFORM_PROMOCOMERCIO
         }
 
         [WebMethod]
-        public static bool CompletaParticipante(string nombre, string apellido, string email, string ciudad, string direccion,
+        public static string CompletaParticipante(string nombre, string apellido, string email, string ciudad, string direccion,
             string CP, string DNI)
         {
             var fromAddress = new MailAddress("tpwebgarciazura@gmail.com", "TPWEB");
@@ -67,14 +67,27 @@ namespace WEBFORM_PROMOCOMERCIO
             nuevo.direccion = direccion;
             nuevo.CP = CP;
             nuevo.DNI = DNI;
+            if (Datos.validacion(nuevo).Count != 0)
+            {
+
+                string error = "No se puede realizar la operacion porque se encontaron error en los siguiente campos: ";
+                foreach (var item in Datos.validacion(nuevo))
+                {
+                    error+= " " + item+",";
+                }
+                error=error.Remove(error.Length - 1);
+                return "{ \"Error\" :1 ,\"descripcion\": \"" + error+"\"}";
+
+            }
             if (!(bool)HttpContext.Current.Session["EsCliente"])
             {
                 if (!PersonaNegocio.InsertarPersona(nuevo))
                 {
-                    return false;
+                    return "{ \"Error\" :1 ,\"descripcion\": \"No se pudo cuardar los datos reinten de nuevo\"}";
                 }
             }
 
+            
             if (VoucherNegocio.CambiarEstado(HttpContext.Current.Session["voucher"].ToString()))
             {
                 if (PremioNegocio.asignar(nuevo.DNI, HttpContext.Current.Session["voucher"].ToString(), HttpContext.Current.Session["idPremio"].ToString()))
@@ -90,18 +103,60 @@ namespace WEBFORM_PROMOCOMERCIO
                     {
                         smtp.Send(message);
                     }
-                    return true;
+                    return "{ \"Error\" :0 }";
                 }
                 else
                 {
-                    return false;
+                    return "{ \"Error\" :1,\"descripcion\": \"No se puedo enviar el correo\"}";
                 }
             }
             else
             {
-                return false;
+                return "{ \"Error\" :1 ,\"descripcion\": \"Error en uso de voucher intente nuevamente\"}";
             }
         }
 
+        public static List<string> validacion(Participante datos)
+        {
+            List<string> error = new List<string>();
+            if (datos.nombre== "")
+            {
+                error.Add("Nombre");
+            }
+            if(datos.apellido == "")
+            {
+                error.Add("Apellido");
+            }
+            if (datos.direccion == "")
+            {
+                error.Add("Direccion");
+            }
+            if (datos.ciudad == "")
+            {
+                error.Add("Ciudad");
+            }
+            if(datos.CP=="" || datos.CP.ToString().Length > 6)
+            {
+                error.Add("Codigo Postal");
+            }
+            if(datos.DNI=="" || datos.DNI.ToString().Length > 8)
+            {
+                error.Add("Dni");
+            }
+
+            int arroba = datos.email.IndexOf('@');
+            if (arroba != -1)
+            {
+                if (datos.email.ToString().Length - 1 == arroba)
+                {
+                    error.Add("email");
+                }
+            }
+            else
+            {
+                error.Add("email");
+            }
+            return error;
+        }
     }
 }

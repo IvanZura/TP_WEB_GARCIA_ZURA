@@ -1,4 +1,5 @@
-
+drop database GARCIA_ZURA_DB_PROMO
+go
 CREATE DATABASE GARCIA_ZURA_DB_PROMO
 GO
 USE GARCIA_ZURA_DB_PROMO
@@ -13,7 +14,7 @@ CREATE TABLE Clientes (
 	DNI	varchar(8)	not null primary key,
 	Nombre	varchar(30) not null,
 	Apellido varchar(30) not null,
-	Email	varchar(30) not null,
+	Email	varchar(50) not null,
 	Direccion	varchar(50) not null,
 	Ciudad	varchar(50) not null,
 	CP	varchar(6) not null

@@ -14,7 +14,7 @@
                             <h6>Una vez ingresado su DNI, presione ENTER para validarlo.</h6>
                             <div class="input-field col s6">
 
-                                <asp:TextBox runat="server" ID="DNI" CssClass="validate" autofocus="true" />
+                                <asp:TextBox runat="server" ID="DNI" CssClass="validate" autofocus="true" onkeypress="return this.value.length<8"  />
                                 <label for="DNI">DNI</label>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                     <label for="ciudad">Ciudad</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <asp:TextBox runat="server" ID="txtCP" CssClass="validate" required="true" />
+                                    <asp:TextBox runat="server" ID="txtCP" CssClass="validate" required="true" onkeypress="return this.value.length<6"/>
                                     <label for="CP">Codigo Postal</label>
                                 </div>
                                 <div class="input-field col s6">
@@ -68,6 +68,7 @@
         let botonParticipa = document.querySelector('#MainContent_btnParticipar')
 
         function ValidaCampos() {
+            Error
             if (Nombre.value == "" || Apellido.value == "" || Email.value == "" || Ciudad.value == "" || Direccion.value == ""
                 || CP.value == "" || DNI.value == "") {
                 return true;
@@ -98,7 +99,7 @@
                 if (valMail) {
                     M.toast({ html: 'Formato de e-mail inválido' })
                 } else {
-                    botonParticipa.setAttribute('disabled', 'true')
+
                     fetch('<%= ResolveUrl("Datos.aspx/CompletaParticipante") %>', {
                         method: 'POST',
                         body: `{nombre:'${Nombre.value}', apellido:'${Apellido.value}', email:'${Email.value}',
@@ -111,13 +112,20 @@
                             return response.json()
                         })
                         .then(response => {
-                            if (response.d) {
+                            response.d=JSON.parse(response.d)
+                            if (response.d.Error == 0) {
+                                botonParticipa.setAttribute('disabled', 'true');
                                 M.toast({ html: 'Ya te ganaste tu premio !' })
                                 setTimeout(function () {
                                     window.location.replace("<%= ResolveUrl("Default.aspx") %>");
                                 }, 1000)
 
                             }
+                            else {
+                                
+                                M.toast({ html: response.d.descripcion });
+                            }
+                                
                         })
                 }
             }
@@ -136,6 +144,9 @@
                 e.preventDefault()
                 if (this.value == '') {
                     M.toast({ html: 'DNI vacío' })
+                }
+                else if(this.value.length>8){
+                    M.toast({ html: 'el campo DNI no puede ser mayor a ocho caracteres' })
                 } else {
                     fetch('<%= ResolveUrl("Datos.aspx/DatosCliente") %>', {
                         method: 'POST',

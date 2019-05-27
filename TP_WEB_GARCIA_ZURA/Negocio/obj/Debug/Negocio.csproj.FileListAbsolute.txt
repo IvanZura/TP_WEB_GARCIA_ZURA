@@ -20,3 +20,14 @@ C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Neg
 C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.dll
 C:\Users\Z\Documents\UTN-Tercer-Cuatrimestre\Prog3\TP_WEB\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.pdb
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\bin\Debug\Negocio.dll
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\bin\Debug\Negocio.pdb
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\bin\Debug\AccesoDatos.dll
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\bin\Debug\Dominio.dll
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\bin\Debug\AccesoDatos.pdb
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\bin\Debug\Dominio.pdb
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.dll
+C:\Users\maxim\Desktop\repo\eb\TP_WEB_GARCIA_ZURA\TP_WEB_GARCIA_ZURA\Negocio\obj\Debug\Negocio.pdb
