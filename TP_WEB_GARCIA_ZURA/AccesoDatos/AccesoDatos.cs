@@ -16,7 +16,7 @@ namespace AccesoDatos
             conexion = new SqlConnection(cadenaConexion);
         }
 
-        public static string cadenaConexion = "data source=(local); initial catalog=GARCIA_ZURA_DB_PROMO; integrated security=sspi";;
+        public static string cadenaConexion = "data source=(local); initial catalog=GARCIA_ZURA_DB_PROMO; integrated security=sspi";
         private SqlCommand comando;
         private SqlConnection conexion;
         private SqlDataReader lector;
